@@ -25,6 +25,22 @@ namespace NewsAppUWP
         public BlankPage24hors()
         {
             this.InitializeComponent();
+            this.ViewModel = new ClassViewModeNews();
+           classComand = new ClassComand();
+            Start();
+
+
         }
+        ClassComand classComand;
+        List<ClassNews> classNews;
+        public async void Start()
+        {
+          
+           
+                ViewModel.AddListNews(await classComand.zagruzka1(@"https://lenta.ru/rss/last24/", 10));
+            
+        }
+        public ClassViewModeNews ViewModel { get; set; }
+       
     }
 }

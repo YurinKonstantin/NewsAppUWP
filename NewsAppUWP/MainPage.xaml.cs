@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -26,16 +27,81 @@ namespace NewsAppUWP
         {
             this.InitializeComponent();
         }
+        private void NavView_Loaded(object sender, RoutedEventArgs e)
+        {
+            // you can also add items in code behind
+           
+        
+
+            // set the initial SelectedItem 
+            foreach (NavigationViewItemBase item in NavView.MenuItems)
+            {
+                if (item is NavigationViewItem && item.Tag.ToString() == "Glavnoe")
+                {
+                    NavView.SelectedItem = item;
+                    NavView.Header = "Главное";
+                    ContentFrame.Navigate(typeof(PivotPageGlavnoe));
+
+
+                    break;
+                }
+            }
+
+          //  ContentFrame.Navigated += On_Navigated;
+
+            // add keyboard accelerators for backwards navigation
+            KeyboardAccelerator GoBack = new KeyboardAccelerator();
+            GoBack.Key = VirtualKey.GoBack;
+            GoBack.Invoked += BackInvoked;
+            KeyboardAccelerator AltLeft = new KeyboardAccelerator();
+            AltLeft.Key = VirtualKey.Left;
+            AltLeft.Invoked += BackInvoked;
+            this.KeyboardAccelerators.Add(GoBack);
+            this.KeyboardAccelerators.Add(AltLeft);
+            // ALT routes here
+            AltLeft.Modifiers = VirtualKeyModifiers.Menu;
+           
+
+
+        }
+        private void BackInvoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
+        {
+            On_BackRequested();
+            args.Handled = true;
+
+        }
+        private bool On_BackRequested()
+        {
+            bool navigated = false;
+
+            // don't go back if the nav pane is overlayed
+            if (NavView.IsPaneOpen && (NavView.DisplayMode == NavigationViewDisplayMode.Compact || NavView.DisplayMode == NavigationViewDisplayMode.Minimal))
+            {
+                return false;
+            }
+            else
+            {
+                if (ContentFrame.CanGoBack)
+                {
+                    ContentFrame.GoBack();
+                    navigated = true;
+                }
+            }
+            return navigated;
+        }
         private void NavView_Navigate(NavigationViewItem item)
         {
             switch (item.Tag)
             {
                 case "Glavnoe":
                    ContentFrame.Navigate(typeof(PivotPageGlavnoe));
+                    NavView.Header = "Главное";
+        
                     break;
 
                 case "Rus":
                     ContentFrame.Navigate(typeof(PivotPageRus));
+                    NavView.Header = "Россия";
                     break;
 
                 case "World":

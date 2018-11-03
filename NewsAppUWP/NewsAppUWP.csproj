@@ -98,6 +98,9 @@
     <Compile Include="BlankPage24hors.xaml.cs">
       <DependentUpon>BlankPage24hors.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ClassComand.cs" />
+    <Compile Include="ClassNews.cs" />
+    <Compile Include="ClassViewModeNews.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

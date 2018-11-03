@@ -9,7 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <NavigationView x:Name="NavView" 
-                    ItemInvoked="NavView_ItemInvoked" IsSettingsVisible="False"  CompactModeThresholdWidth="960" CompactPaneLength="0" ExpandedModeThresholdWidth="960" >
+                    ItemInvoked="NavView_ItemInvoked" IsSettingsVisible="False"  CompactModeThresholdWidth="2048" CompactPaneLength="0" ExpandedModeThresholdWidth="960" Loaded="NavView_Loaded" Header="Заглавие">
         <NavigationView.Background>
             <AcrylicBrush/>
         </NavigationView.Background>
@@ -34,15 +34,15 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Style="{StaticResource TitleTextBlockStyle}"
+                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" 
                            FontSize="28"
                            VerticalAlignment="Center"
                            Margin="12,0"
-                           Text="Это Header"/>
+                           Text="{Binding}"/>
                     <CommandBar Grid.Column="1"
                             HorizontalAlignment="Right"
-                            DefaultLabelPosition="Right">
-                        <AppBarButton Label="Настройки" Icon="Setting"/>
+                            DefaultLabelPosition="Right" Background="Transparent">
+                        <AppBarButton Label="Настройки" Icon="Setting" Background="Transparent"/>
                     </CommandBar>
                 </Grid>
             </DataTemplate>
