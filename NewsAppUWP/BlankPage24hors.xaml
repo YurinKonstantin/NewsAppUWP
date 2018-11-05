@@ -8,12 +8,12 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <GridView ItemsSource="{x:Bind ViewModel.ListNews}">
+    <GridView ItemsSource="{x:Bind ViewModel.ListNews}" >
         <GridView.ItemTemplate>
-            <DataTemplate x:Name="ImageTextDataTemplate" x:DataType="local:ClassNews">
-                <StackPanel  MaxWidth="420" Margin="12" AutomationProperties.Name="{x:Bind Title}">
+            <DataTemplate x:Name="ImageTextDataTemplate" x:DataType="local:ClassNews" >
+                <StackPanel  MaxWidth="360" AutomationProperties.Name="{x:Bind Title}" Background="White">
                     <Image Source="{x:Bind Enclosure}"   Stretch="UniformToFill"/>
-                    <StackPanel Margin="0,12">
+                    <StackPanel>
                         <TextBlock Text="{x:Bind Title}" TextWrapping="WrapWholeWords"/>
                         <TextBlock Text="{x:Bind Description}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" TextWrapping="Wrap"/>
                     </StackPanel>

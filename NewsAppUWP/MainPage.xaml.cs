@@ -6,6 +6,8 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.System;
+using Windows.UI;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -26,6 +28,11 @@ namespace NewsAppUWP
         public MainPage()
         {
             this.InitializeComponent();
+            var t = ApplicationView.GetForCurrentView().TitleBar;
+            t.BackgroundColor = Colors.CadetBlue;
+            t.ForegroundColor = Colors.CadetBlue;
+            t.ButtonBackgroundColor = Colors.CadetBlue;
+            
         }
         private void NavView_Loaded(object sender, RoutedEventArgs e)
         {
@@ -34,20 +41,18 @@ namespace NewsAppUWP
         
 
             // set the initial SelectedItem 
-            foreach (NavigationViewItemBase item in NavView.MenuItems)
-            {
-                if (item is NavigationViewItem && item.Tag.ToString() == "Glavnoe")
-                {
-                    NavView.SelectedItem = item;
+            
+                
+                    NavView.SelectedItem = NavView.MenuItems[0];
                     NavView.Header = "Главное";
+                    NavView.IsSettingsVisible = true;
+                    NavView.Language = "ru-Ru";
                     ContentFrame.Navigate(typeof(PivotPageGlavnoe));
+                    
+                
+            
 
-
-                    break;
-                }
-            }
-
-          //  ContentFrame.Navigated += On_Navigated;
+           
 
             // add keyboard accelerators for backwards navigation
             KeyboardAccelerator GoBack = new KeyboardAccelerator();

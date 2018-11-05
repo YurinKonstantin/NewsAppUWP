@@ -10,7 +10,7 @@ namespace NewsAppUWP
 {
    public class ClassComand
     {
-        public async Task<List<ClassNews>> zagruzka1(String classIstochnik, double xw)
+        public async Task<List<ClassNews>> zagruzka1(ClassIstochnik classIstochnik, double xw)
         {
             List<ClassNews> Col1 = new List<ClassNews>();
 
@@ -24,7 +24,7 @@ namespace NewsAppUWP
 
                 HttpClient client = new HttpClient();
 
-                HttpResponseMessage response = await client.GetAsync(classIstochnik);
+                HttpResponseMessage response = await client.GetAsync(classIstochnik.Urr);
                 //  await prog.ProgressTo(.3, 250, Easing.Linear);
                 response.EnsureSuccessStatusCode();
 
@@ -134,7 +134,7 @@ namespace NewsAppUWP
                         Enclosure = url1,
                         Category = category,
                         h = w,
-                        //istochnic = classIstochnik.Istochnik,
+                        istochnic = classIstochnik.Istochnik,
                        // FigShow = fig,
                        // FigDesc = ClassSetUpUser.FigDesc
 

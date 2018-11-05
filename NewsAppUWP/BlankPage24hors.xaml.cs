@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -25,20 +28,88 @@ namespace NewsAppUWP
         public BlankPage24hors()
         {
             this.InitializeComponent();
+           
+          //  t.ButtonForegroundColor = Colors.White;
             this.ViewModel = new ClassViewModeNews();
            classComand = new ClassComand();
-            Start();
-
-
+           zagruzka1();
+          
+           
         }
+    
         ClassComand classComand;
         List<ClassNews> classNews;
         public async void Start()
         {
-          
-           
-                ViewModel.AddListNews(await classComand.zagruzka1(@"https://lenta.ru/rss/last24/", 10));
+          try
+            {
+                //ViewModel.AddListNews(await classComand.zagruzka1(@"https://lenta.ru/rss/last24/", 10));
+            }
+
+            catch(Exception ex)
+            {
+
+            } 
             
+        }
+        public async Task zagruzka1()
+        {
+
+            try
+            {
+
+               
+
+                   List<ClassNews> rSSFeedItems = await Task.Run(() => (classComand.zagruzka1(new ClassIstochnik() { Urr = ClassURI.News24, Istochnik = "Lenta.ru" }, 10)));
+                    ViewModel.ListNews.Clear();
+
+                    if (rSSFeedItems.Count != 0)
+                    {
+
+                        foreach (var v in rSSFeedItems)
+                        {
+                            v.ButShow = true;
+                        ViewModel.ListNews.Add(v);
+
+
+                        }
+                    }
+                    rSSFeedItems = await Task.Run(() => (classComand.zagruzka1(new ClassIstochnik() { Urr = @"https://www.vedomosti.ru/rss/issue", Istochnik = "Vedomosti.ru" }, 10)));
+                    int poz = 0;
+                    if (rSSFeedItems.Count != 0)
+                    {
+                        foreach (var v in rSSFeedItems)
+                        {
+                            v.ButShow = true;
+                            if (ViewModel.ListNews.Count > poz * 2 + 1)
+                            {
+                            ViewModel.ListNews.Insert(poz * 2 + 1, v);
+                            }
+                            else
+                            {
+                            ViewModel.ListNews.Add(v);
+                            }
+
+
+                            poz++;
+
+                        }
+                    }
+                    if (ViewModel.ListNews.Count == 0)
+                    {
+                    ViewModel.ListNews.Add(new ClassNews() { Title = "Новостей по данной теме нет", Description = "Потяните вниз по списку данных что бы обновить.", ButShow = false, FigShow = false });
+
+
+                    }
+                
+             
+
+            }
+            catch (Exception)
+            {
+
+            }
+
         }
         public ClassViewModeNews ViewModel { get; set; }
        
