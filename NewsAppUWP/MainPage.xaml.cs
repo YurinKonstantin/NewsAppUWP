@@ -28,10 +28,10 @@ namespace NewsAppUWP
         public MainPage()
         {
             this.InitializeComponent();
-            var t = ApplicationView.GetForCurrentView().TitleBar;
-            t.BackgroundColor = Colors.CadetBlue;
-            t.ForegroundColor = Colors.CadetBlue;
-            t.ButtonBackgroundColor = Colors.CadetBlue;
+          //  var t = ApplicationView.GetForCurrentView().TitleBar;
+          //  t.BackgroundColor = Colors.CadetBlue;
+          //  t.ForegroundColor = Colors.CadetBlue;
+          //  t.ButtonBackgroundColor = Colors.CadetBlue;
             
         }
         private void NavView_Loaded(object sender, RoutedEventArgs e)

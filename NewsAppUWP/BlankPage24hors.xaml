@@ -8,18 +8,22 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <GridView ItemsSource="{x:Bind ViewModel.ListNews}" >
+    <GridView ItemsSource="{x:Bind ViewModel.ListNews}" VerticalAlignment="Top" >
         <GridView.ItemTemplate>
-            <DataTemplate x:Name="ImageTextDataTemplate" x:DataType="local:ClassNews" >
-                <StackPanel  MaxWidth="360" AutomationProperties.Name="{x:Bind Title}" Background="White">
-                    <Image Source="{x:Bind Enclosure}"   Stretch="UniformToFill"/>
-                    <StackPanel>
-                        <TextBlock Text="{x:Bind Title}" TextWrapping="WrapWholeWords"/>
-                        <TextBlock Text="{x:Bind Description}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}" TextWrapping="Wrap"/>
+            <DataTemplate x:Name="ImageOverlayDataTemplate" x:DataType="local:ClassNews">
+                <Grid  Width="360" AutomationProperties.Name="{x:Bind Title}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Image Source="{x:Bind Enclosure}" Stretch="UniformToFill"/>
+                    <StackPanel Orientation="Vertical"  Background="{ThemeResource SystemControlBaseMediumLowAcrylicElementMediumBrush }" Padding="12" Grid.Row="1">
+                        <TextBlock Text="{x:Bind Title}" />
+                        <TextBlock  Text="{x:Bind Description}"   TextWrapping="Wrap" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
                     </StackPanel>
-                </StackPanel>
+                 
+                </Grid>
             </DataTemplate>
         </GridView.ItemTemplate>
-     
     </GridView>
 </Page>

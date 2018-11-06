@@ -5,133 +5,12 @@
     xmlns:local="using:NewsAppUWP"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="WhiteSmoke" >
-    <Page.Resources>
-        <Style TargetType="NavigationViewItem">
-            <Setter Property="FontSize"
-                Value="18" />
-            <Setter Property="FontFamily"
-                Value="{ThemeResource PivotHeaderItemFontFamily}" />
-            <Setter Property="FontWeight"
-                Value="{ThemeResource PivotHeaderItemThemeFontWeight}" />
-            <Setter Property="CharacterSpacing"
-                Value="{ThemeResource PivotHeaderItemCharacterSpacing}" />
-        
-            
-            <Setter Property="Padding"
-                Value="{ThemeResource PivotHeaderItemMargin}" />
-            <Setter Property="Height"
-                Value="38" />
-            <Setter Property="VerticalContentAlignment"
-                Value="Center" />
-            
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="NavigationViewItem">
-                        <Grid x:Name="RootGrid" Background="{TemplateBinding Background}" Margin="0,4,4,4">
-
-                            <VisualStateManager.VisualStateGroups>
-                                <VisualStateGroup x:Name="FocusStates">
-                                    <VisualState x:Name="Focused">
-                                        <VisualState.Setters>
-                                            <Setter Target="FocusPipe.Visibility"
-                                                Value="Visible" />
-                                        </VisualState.Setters>
-                                    </VisualState>
-                                    <VisualState x:Name="Unfocused" />
-                                </VisualStateGroup>
-                                <VisualStateGroup x:Name="CommonStates">
-                                    
-                                    <VisualStateGroup.Transitions>
-                                        <VisualTransition From="Unselected"
-                                                      To="UnselectedLocked"
-                                                      GeneratedDuration="0:0:0.33" />
-                                        <VisualTransition From="UnselectedLocked"
-                                                      To="Unselected"
-                                                      GeneratedDuration="0:0:0.33" />
-                                    </VisualStateGroup.Transitions>
-                                    
-                                    <VisualState x:Name="Normal">
-
-                                        <Storyboard>
-                                            <PointerUpThemeAnimation Storyboard.TargetName="RootGrid" />
-                                        </Storyboard>
-                                    </VisualState>
-                                  
-                                    <VisualState x:Name="PointerOver">
-                                        <VisualState.Setters>
-                                            <Setter Target="RootGrid.(RevealBrush.State)" Value="PointerOver" />
-                                            <Setter Target="RootGrid.Background" Value="{ThemeResource ButtonRevealBackgroundPointerOver}" />
-                                            <Setter Target="ContentPresenter.BorderBrush" Value="Transparent"/>
-                                            <Setter Target="ContentPresenter.Foreground" Value="{ThemeResource ButtonForegroundPointerOver}" />
-                                            <!--Setter Target="FocusPipe.Visibility"
-                                                Value="Visible" /-->
-                                        </VisualState.Setters>
-
-                                        <Storyboard>
-                                            <PointerUpThemeAnimation Storyboard.TargetName="RootGrid" />
-                                        </Storyboard>
-                                    </VisualState>
-
-                                    <VisualState x:Name="Pressed">
-                                        <VisualState.Setters>
-                                            <Setter Target="RootGrid.(RevealBrush.State)" Value="Pressed" />
-                                            <!--Setter Target="RootGrid.Background" Value="{ThemeResource ButtonRevealBackgroundPressed}" /-->
-                                            <!--Setter Target="ContentPresenter.BorderBrush" Value="{ThemeResource ButtonRevealBackgroundPressed}" /-->
-                                            <!--Setter Target="ContentPresenter.Foreground" Value="{ThemeResource ButtonForegroundPressed}" /-->
-                                            <Setter Target="FocusPipe.Visibility"
-                                                Value="Visible" />
-                                        </VisualState.Setters>
-
-                                        <Storyboard>
-                                            <PointerDownThemeAnimation Storyboard.TargetName="RootGrid" />
-                                          
-                                        </Storyboard>
-                                    </VisualState>
-
-                                    <VisualState x:Name="Disabled">
-                                        <VisualState.Setters>
-                                            <Setter Target="RootGrid.Background" Value="{ThemeResource ButtonRevealBackgroundDisabled}" />
-                                            <Setter Target="ContentPresenter.BorderBrush" Value="{ThemeResource ButtonRevealBorderBrushDisabled}" />
-                                            <Setter Target="ContentPresenter.Foreground" Value="{ThemeResource ButtonForegroundDisabled}" />
-                                            <Setter Target="FocusPipe.Visibility"
-                                                Value="Collapsed" />
-                                        </VisualState.Setters>
-                                    </VisualState>
-                                </VisualStateGroup>
-                               
-                            </VisualStateManager.VisualStateGroups>
-                            <Grid.RenderTransform>
-                                <TranslateTransform x:Name="ContentPresenterTranslateTransform" />
-                            </Grid.RenderTransform>
-                            <ContentPresenter x:Name="ContentPresenter"
-                    BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}"
-                    Content="{TemplateBinding Content}"
-                    ContentTransitions="{TemplateBinding ContentTransitions}"
-                    ContentTemplate="{TemplateBinding ContentTemplate}"
-                    Padding="{TemplateBinding Padding}"
-                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                    AutomationProperties.AccessibilityView="Raw" />
-                            <Rectangle x:Name="FocusPipe" 
-                                   Fill="CadetBlue"
-                                   Width="8"
-                                   VerticalAlignment="Stretch"
-                                   HorizontalAlignment="Left"
-                                   Visibility="Collapsed" 
-                                       Margin="-4,0,0,0"/>
-                </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Page.Resources>
+    mc:Ignorable="d"  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+     >
+   
     <NavigationView x:Name="NavView"  
                ItemInvoked="NavView_ItemInvoked" IsSettingsVisible="False"  CompactModeThresholdWidth="2048" CompactPaneLength="0" ExpandedModeThresholdWidth="960" Loaded="NavView_Loaded" Header="Заглавие" IsBackButtonVisible="Collapsed" >
-     
-        
+
         <NavigationView.MenuItems>
             
             <NavigationViewItem Content="Главное" Tag="Glavnoe"/>
@@ -147,12 +26,12 @@
 
         <NavigationView.HeaderTemplate>
             <DataTemplate>
-                <Grid Background="Transparent">
+                <Grid >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" 
+                    <TextBlock 
                            FontSize="22"
                            VerticalAlignment="Center"
                            Margin="4,0" Padding="0"
@@ -164,7 +43,7 @@
 
 
 
-        <Frame x:Name="ContentFrame" Background="WhiteSmoke" Margin="0,-15,0,0">
+        <Frame x:Name="ContentFrame"  Margin="0,-15,0,0">
             <Frame.ContentTransitions>
                 <TransitionCollection>
                     <NavigationThemeTransition/>
