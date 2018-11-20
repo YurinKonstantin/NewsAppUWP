@@ -13,6 +13,14 @@ namespace NewsAppUWP
     {
         private ObservableCollection<ClassNews> listNews = new ObservableCollection<ClassNews>();
         public ObservableCollection<ClassNews> ListNews { get { return this.listNews; } }
+        private ObservableCollection<ClassNews> listNewsRus = new ObservableCollection<ClassNews>();
+        public ObservableCollection<ClassNews> ListNewsRus { get { return this.listNewsRus; } }
+        private ObservableCollection<ClassNews> listNewsWord = new ObservableCollection<ClassNews>();
+        public ObservableCollection<ClassNews> ListNewsWord { get { return this.listNewsWord; } }
+        private ObservableCollection<ClassNews> listNewsiconom = new ObservableCollection<ClassNews>();
+        public ObservableCollection<ClassNews> ListNewsiconom { get { return this.listNewsiconom; } }
+        private ObservableCollection<ClassNews> listNewsSport = new ObservableCollection<ClassNews>();
+        public ObservableCollection<ClassNews> ListNewsSport { get { return this.listNewsSport; } }
         public void AddListNews(ClassNews classNews)
         {
             

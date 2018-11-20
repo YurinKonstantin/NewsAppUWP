@@ -8,14 +8,112 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Tag="Главное">
    
-    <Pivot FontSize="18" IsHeaderItemsCarouselEnabled="False">
+    <Pivot FontSize="18" IsHeaderItemsCarouselEnabled="False" Margin="12,0,0,0" SelectionChanged="Pivot_SelectionChanged">
         <PivotItem Header="Топ 24 часа" >
-            <local:BlankPage24hors />
+            <GridView ItemsSource="{x:Bind ViewModel.ListNews}" VerticalAlignment="Top" SelectionChanged="GridView_SelectionChanged">
+                <GridView.ItemTemplate>
+                    <DataTemplate x:Name="ImageOverlayDataTemplate" x:DataType="local:ClassNews">
+                        <Grid  Width="360" AutomationProperties.Name="{x:Bind Title}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Image Source="{x:Bind Enclosure}" Stretch="UniformToFill"/>
+                            <StackPanel Orientation="Vertical"  Background="{ThemeResource SystemControlBaseMediumLowAcrylicElementMediumBrush }" Padding="12" Grid.Row="1">
+                                <TextBlock Text="{x:Bind Title}" TextWrapping="Wrap"/>
+                                <TextBlock  Text="{x:Bind Description}"   TextWrapping="Wrap" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                            </StackPanel>
+
+                        </Grid>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
         </PivotItem>
        
-        <PivotItem Header="Россия"  ></PivotItem>
-        <PivotItem Header="Мир" ></PivotItem>
-        <PivotItem Header="Экономика"  ></PivotItem>
-        <PivotItem Header="Спорт" ></PivotItem>
+        <PivotItem Header="Россия"  >
+            <GridView ItemsSource="{x:Bind ViewModel.ListNewsRus}" VerticalAlignment="Top" SelectionChanged="GridView_SelectionChanged">
+                <GridView.ItemTemplate>
+                    <DataTemplate x:Name="ImageOverlayDataTemplate1" x:DataType="local:ClassNews">
+                        <Grid  Width="360" AutomationProperties.Name="{x:Bind Title}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Image Source="{x:Bind Enclosure}" Stretch="UniformToFill"/>
+                            <StackPanel Orientation="Vertical"  Background="{ThemeResource SystemControlBaseMediumLowAcrylicElementMediumBrush }" Padding="12" Grid.Row="1">
+                                <TextBlock Text="{x:Bind Title}" TextWrapping="Wrap"/>
+                                <TextBlock  Text="{x:Bind Description}"   TextWrapping="Wrap" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                            </StackPanel>
+
+                        </Grid>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+        </PivotItem>
+        <PivotItem Header="Мир" >
+            <GridView ItemsSource="{x:Bind ViewModel.ListNewsWord}" VerticalAlignment="Top" SelectionChanged="GridView_SelectionChanged">
+                <GridView.ItemTemplate>
+                    <DataTemplate x:Name="ImageOverlayDataTemplate1World" x:DataType="local:ClassNews">
+                        <Grid  Width="360" AutomationProperties.Name="{x:Bind Title}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Image Source="{x:Bind Enclosure}" Stretch="UniformToFill"/>
+                            <StackPanel Orientation="Vertical"  Background="{ThemeResource SystemControlBaseMediumLowAcrylicElementMediumBrush }" Padding="12" Grid.Row="1">
+                                <TextBlock Text="{x:Bind Title}" TextWrapping="Wrap"/>
+                                <TextBlock  Text="{x:Bind Description}"   TextWrapping="Wrap" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                            </StackPanel>
+
+                        </Grid>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+        </PivotItem>
+        <PivotItem Header="Экономика"  >
+            <GridView ItemsSource="{x:Bind ViewModel.ListNewsiconom}" VerticalAlignment="Top" SelectionChanged="GridView_SelectionChanged">
+                <GridView.ItemTemplate>
+                    <DataTemplate x:Name="ImageOverlayDataTemplate1Econom" x:DataType="local:ClassNews">
+                        <Grid  Width="360" AutomationProperties.Name="{x:Bind Title}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Image Source="{x:Bind Enclosure}" Stretch="UniformToFill"/>
+                            <StackPanel Orientation="Vertical"  Background="{ThemeResource SystemControlBaseMediumLowAcrylicElementMediumBrush }" Padding="12" Grid.Row="1">
+                                <TextBlock Text="{x:Bind Title}" TextWrapping="Wrap"/>
+                                <TextBlock  Text="{x:Bind Description}"   TextWrapping="Wrap" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                            </StackPanel>
+
+                        </Grid>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+        </PivotItem>
+        <PivotItem Header="Спорт" >
+            <GridView ItemsSource="{x:Bind ViewModel.ListNewsSport}" VerticalAlignment="Top" SelectionChanged="GridView_SelectionChanged">
+                <GridView.ItemTemplate>
+                    <DataTemplate x:Name="ImageOverlayDataTemplate1Sport" x:DataType="local:ClassNews">
+                        <Grid  Width="360" AutomationProperties.Name="{x:Bind Title}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Image Source="{x:Bind Enclosure}" Stretch="UniformToFill"/>
+                            <StackPanel Orientation="Vertical"  Background="{ThemeResource SystemControlBaseMediumLowAcrylicElementMediumBrush }" Padding="12" Grid.Row="1">
+                                <TextBlock Text="{x:Bind Title}" TextWrapping="Wrap"/>
+                                <TextBlock  Text="{x:Bind Description}"   TextWrapping="Wrap" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                            </StackPanel>
+
+                        </Grid>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+        </PivotItem>
     </Pivot>
 </Page>

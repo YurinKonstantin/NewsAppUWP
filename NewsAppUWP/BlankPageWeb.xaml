@@ -1,0 +1,31 @@
+﻿<Page
+    x:Class="NewsAppUWP.BlankPageWeb"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NewsAppUWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+ 
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+
+        </Grid.RowDefinitions>
+        <CommandBar Background="Transparent">
+            <CommandBar.Content>
+                <AppBarButton VerticalAlignment="Top" HorizontalAlignment="Left" 
+Style="{StaticResource NavigationBackButtonNormalStyle}" Click="Back_Click"/>
+            </CommandBar.Content>
+          
+        </CommandBar>
+        <WebView x:Name="web" Grid.Row="1"/>
+        <WebView x:Name="web1" Grid.Row="2"/>
+        <Button Content="Pres" Click="Button_Click" Grid.Row="3"/>
+
+    </Grid>
+</Page>

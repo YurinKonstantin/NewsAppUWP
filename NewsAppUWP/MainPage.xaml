@@ -9,7 +9,7 @@
      >
    
     <NavigationView x:Name="NavView"  
-               ItemInvoked="NavView_ItemInvoked" IsSettingsVisible="False"  CompactModeThresholdWidth="2048" CompactPaneLength="0" ExpandedModeThresholdWidth="960" Loaded="NavView_Loaded" Header="Заглавие" IsBackButtonVisible="Collapsed" >
+               ItemInvoked="NavView_ItemInvoked" IsSettingsVisible="False"  CompactModeThresholdWidth="2048" CompactPaneLength="0" ExpandedModeThresholdWidth="960" Loaded="NavView_Loaded" AlwaysShowHeader="False"  Header="Заглавие" IsBackButtonVisible="Collapsed" >
 
         <NavigationView.MenuItems>
             
@@ -43,7 +43,7 @@
 
 
 
-        <Frame x:Name="ContentFrame"  Margin="0,-15,0,0">
+        <Frame x:Name="ContentFrame"  >
             <Frame.ContentTransitions>
                 <TransitionCollection>
                     <NavigationThemeTransition/>

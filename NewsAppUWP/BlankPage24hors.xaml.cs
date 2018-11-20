@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI;
+using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -112,6 +113,21 @@ namespace NewsAppUWP
 
         }
         public ClassViewModeNews ViewModel { get; set; }
-       
+
+        private async void GridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            GridView GridViewNews = sender as GridView;
+            ClassNews classNews = (ClassNews)GridViewNews.SelectedItem;
+           // MessageDialog messageDialog = new MessageDialog(classNews.Description);
+          //  await messageDialog.ShowAsync();
+          
+                BlankPageWeb blankPageWeb = new BlankPageWeb();
+                blankPageWeb.hh = classNews.Link;
+            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame.Navigate(typeof(BlankPageWeb), classNews.Link);
+         
+
+
+        }
     }
 }
