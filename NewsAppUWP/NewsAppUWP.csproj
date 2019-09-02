@@ -11,7 +11,7 @@
     <AssemblyName>NewsAppUWP</AssemblyName>
     <DefaultLanguage>ru-RU</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.17134.0</TargetPlatformVersion>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.17763.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.15063.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -98,6 +98,9 @@
     <Compile Include="BlankPage24hors.xaml.cs">
       <DependentUpon>BlankPage24hors.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BlankPageGeo.xaml.cs">
+      <DependentUpon>BlankPageGeo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BlankPageWeb.xaml.cs">
       <DependentUpon>BlankPageWeb.xaml</DependentUpon>
     </Compile>
@@ -139,6 +142,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="BlankPage24hors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BlankPageGeo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

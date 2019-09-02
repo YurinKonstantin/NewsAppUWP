@@ -123,6 +123,9 @@ namespace NewsAppUWP
                 case "Zac":
                     //  ContentFrame.Navigate(typeof(MyContentPage));
                     break;
+                case "geo":
+                      ContentFrame.Navigate(typeof(BlankPageGeo));
+                    break;
             }
         }
         private void NavView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)

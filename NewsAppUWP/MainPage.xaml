@@ -19,8 +19,8 @@
             <NavigationViewItem Content="Спорт" Tag="Sport"/>
             <NavigationViewItem Content="Экономика" Tag="Econom"/>
             <NavigationViewItemSeparator/>
-            <NavigationViewItemHeader Content="Возможности"/>
-            <NavigationViewItem  Content="Закладки" Tag="Zac"/>
+            <NavigationViewItemHeader Content="Возможности" />
+            <NavigationViewItem  Content="Закладки"  Tag="geo"/>
 
         </NavigationView.MenuItems>
 
